@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DevProof</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo"><i>&lt;/&gt;</i> DevProof</div>
+  <button id="theme" aria-label="Toggle light or dark theme">Theme</button>
+</header>
+
+<section class="panel input" aria-label="Code input">
+  <div>
+    <h2>AI-powered skill verifier</h2>
+    <div class="sub">Paste your code or README. DevProof scores it and backs every score with evidence from your code.</div>
+  </div>
+  <input id="name" type="text" placeholder="Developer name or GitHub username" maxlength="40" aria-label="Developer name">
+  <div class="row"><input id="repo" type="text" placeholder="https://github.com/owner/repo" aria-label="GitHub repository link" style="flex:1;min-width:200px"><button id="gh">Load from GitHub</button></div>
+  <textarea id="code" placeholder="Paste a file, a README, or several snippets here…" aria-label="Code to verify"></textarea>
+  <div class="row">
+    <button class="go" id="run">Verify my code</button>
+    <button id="demo">Load sample code</button>
+  </div>
+  <div id="status" role="status" aria-live="polite"></div>
+</section>
+
+<section id="out" aria-label="Verification report">
+  <div class="panel gauge">
+    <h2 id="who">Overall developer score</h2>
+    <svg viewBox="0 0 240 150" role="img" aria-label="Score gauge">
+      <path d="M30 130 A90 90 0 0 1 210 130" fill="none" stroke="var(--line)" stroke-width="16" stroke-linecap="round"/>
+      <path id="arc" d="M30 130 A90 90 0 0 1 210 130" fill="none" stroke="url(#g)" stroke-width="16" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/>
+      <defs><linearGradient id="g"><stop offset="0" stop-color="#8b6bff"/><stop offset="1" stop-color="#4de3ff"/></linearGradient></defs>
+      <text class="num" x="120" y="118" text-anchor="middle" id="score">0</text>
+      <text x="120" y="140" text-anchor="middle">out of 100</text>
+    </svg>
+    <p class="summary" id="summary"></p>
+    <div class="stamp" id="stamp"></div>
+  </div>
+  <div class="panel"><h2>Key skill breakdown</h2><div id="skills"></div></div>
+  <div class="panel span2"><h2>Verified badges</h2><div class="badges" id="badges"></div></div>
+  <div class="charts span2">
+    <div class="panel"><h2>Quality across your code</h2><svg id="line" viewBox="0 0 300 150" width="100%" role="img" aria-label="Line chart of quality by section"></svg></div>
+    <div class="panel"><h2>Complexity analysis</h2><svg id="bars" viewBox="0 0 300 150" width="100%" role="img" aria-label="Bar chart of complexity by part"></svg></div>
+  </div>
+</section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
